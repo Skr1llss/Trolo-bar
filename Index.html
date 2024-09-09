@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra Estadísticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .progress-container {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar div {
+            height: 30px;
+            width: 50%;
+            background-color: #76b852;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Barra de Estadísticas</h1>
+
+    <div class="progress-container">
+        <div class="label">Mystic</div>
+        <div class="progress-bar">
+            <div id="mystic-bar" style="width: 50%;">50%</div>
+        </div>
+        <button onclick="modifyBar('mystic', 10)">Aumentar Mystic</button>
+        <button onclick="modifyBar('mystic', -10)">Disminuir Mystic</button>
+    </div>
+
+    <div class="progress-container">
+        <div class="label">Alvar</div>
+        <div class="progress-bar">
+            <div id="alvar-bar" style="width: 50%;">50%</div>
+        </div>
+        <button onclick="modifyBar('alvar', 10)">Aumentar Alvar</button>
+        <button onclick="modifyBar('alvar', -10)">Disminuir Alvar</button>
+    </div>
+
+    <script>
+        function modifyBar(name, value) {
+            var bar = document.getElementById(name + '-bar');
+            var currentWidth = parseInt(bar.style.width);
+            var newWidth = currentWidth + value;
+
+            if (newWidth > 100) newWidth = 100;
+            if (newWidth < 0) newWidth = 0;
+
+            bar.style.width = newWidth + '%';
+            bar.innerText = newWidth + '%';
+        }
+    </script>
+
+</body>
+</html>
